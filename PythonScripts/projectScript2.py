@@ -74,6 +74,11 @@ temperatureAverage = tempAvg()
 humidityAverage = HumidityAvg()
 tankReading = distanceReading()
 
+text_file = open("Output.txt", "w")
+text_file.write("Tank Level: %s\n " % tankReading)
+text_file.write("Humidity  : %s\n" % humidityAverage)
+text_file.write("Tempreture: %s\n" % temperatureAverage)
+
 
 cursor.execute(''' INSERT INTO `mySensors`(`epoch`, `temp`,`humidity`,`distance`) VALUES (%s,%s,%s,%s) ''',(epoch,temperatureAverage,humidityAverage,tankReading)) ###### inserts data into my database
 
